@@ -1,0 +1,799 @@
+<!DOCTYPE >
+ <html>
+	<head>
+		<meta charset="utf-8" >
+                <meta name="viewport" >
+		<title>710483104 林邑泉 RBFN</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta property="og:title" content="710483104 林邑泉 RBFN" />
+        <meta property="og:description" content="在數學建模領域，放射狀基底函數網絡（Radial basis function network，縮寫 RBF network）是一種使用放射狀基底函數作為激活函數的人工神經網絡。放射狀基底函數網絡的輸出是輸入的放射狀基底函數和神經元參數的線性組合。放射狀基底函數網絡具有多種用途，包括包括函數近似法、時間序列預測、分類和系統控制。他們最早由布魯姆赫德（Broomhead）和洛維（Lowe）在1988年建立。
+放射狀基底函數網絡通常有三層：輸入層、隱藏層和一個非線性激活函數和線性徑向基神經網絡輸出層。輸入可以被建模為實數向量。輸出是輸入向量的一個純量函數。" />
+        <meta name="description" content="在數學建模領域，放射狀基底函數網絡（Radial basis function network，縮寫 RBF network）是一種使用放射狀基底函數作為激活函數的人工神經網絡。放射狀基底函數網絡的輸出是輸入的放射狀基底函數和神經元參數的線性組合。放射狀基底函數網絡具有多種用途，包括包括函數近似法、時間序列預測、分類和系統控制。他們最早由布魯姆赫德（Broomhead）和洛維（Lowe）在1988年建立。
+放射狀基底函數網絡通常有三層：輸入層、隱藏層和一個非線性激活函數和線性徑向基神經網絡輸出層。輸入可以被建模為實數向量。輸出是輸入向量的一個純量函數。"/>
+		
+
+
+
+	</head>
+	<body style="background-color:#DCDCDC">
+		<div style="margin:auto;margin-top:10px;margin-left:20px;font-size:40px;">
+			<font>710483104 林邑泉 Radial basis function network(RBFN)<br></font>
+		</div>
+		<table border="0" style="margin-top:20px;margin-left:20px;width:1300px;">
+			<tr>
+				<td style="width:50px;">
+				</td>
+				<td style="width:350px;"align="center" >
+					<div style="margin:auto;font-size:30px;">
+						<font>INPUT</font>
+					</div>
+				</td>
+				<td style="width:50px;">
+				</td>
+				<td style="width:50px;">
+				</td>
+				<td style="width:350px;"align="center" >
+					<div style="margin:auto;font-size:30px;">
+						<font>hidden points</font>
+					</div>
+				</td>
+				<td style="width:50px;">
+
+				</td>
+				<td style="width:50px;">
+
+				</td>
+				<td style="width:350px;"align="center" >
+					<div style="margin:auto;font-size:30px;">
+						<font>result</font>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td style="vertical-align:middle;">
+					<div style="margin:auto;font-size:30px;vertical-align:middle;">
+						<font>Y</font>
+					</div>
+				</td>
+				<td >  
+					<canvas id="canvas0" width="350" height="350" style="border: 1px solid #000;">
+						Sorry, your browser doesn't support the &lt;canvas&gt; element.
+					 </canvas>
+				</td>
+				<td >
+
+				</td>
+				<td >
+					<div style="margin:auto;font-size:30px;vertical-align:middle;">
+						<font>Y</font>
+					</div>
+				</td>
+				<td >
+					<canvas id="canvas1" width="350" height="350" style="border: 1px solid #000;">
+						Sorry, your browser doesn't support the &lt;canvas&gt; element.
+					 </canvas>
+
+				</td>
+				<td >
+
+				</td>
+				<td >
+
+					<div style="margin:auto;font-size:30px;vertical-align:middle;">
+						<font id="fontY"></font>
+					</div>
+				</td>
+				<td >
+					<canvas id="canvas2" width="350" height="350" style="border: 1px solid #000;">
+						Sorry, your browser doesn't support the &lt;canvas&gt; element.
+					 </canvas>
+
+				</td>
+			</tr>
+			<tr>
+				<td >
+
+				</td>
+				<td align="center" >
+					<div style="margin:auto;font-size:30px;align:center;">
+						<font>X</font>
+					</div>
+
+				</td>
+				<td >
+
+				</td>
+				<td >
+
+				</td>
+				<td align="center" >
+					<div style="margin:auto;font-size:30px;align:center;">
+						<font>X</font>
+					</div>
+
+				</td>
+				<td >
+
+				</td>
+				<td >
+
+				</td>
+				<td align="center" >
+					<div style="margin:auto;font-size:30px;align:center;">
+						<font id="fontX"></font>
+					</div>
+
+				</td>
+			</tr>
+		</table>
+
+		<table style="margin-top:0px;margin-left:50px;" >
+			<tr height="30px">
+				<td width="50px" align="center">
+					<div id="aa" onclick="choseA()" width="50px" height="80px"style="background-color:#0066FF;"><font>A</font></div>
+				</td>
+				<td width="160px" align="center">
+					<div id="bb" onclick="choseB()" width="50px" height="80px"style="background-color:#00DD77;"><font>B</font></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<font size="5">hidden pointers:</font>
+				</td>
+				<td>
+					<input id="hidden" type="text" size="2" value="2" style="text-align: right;margin-left:10px;font-size:32px;"/>
+				</td>
+			</tr>
+			<tr height="70px">
+				<td colspan="2" align="center">
+					<div style="font-size:40px;margin:auto;">
+						<input type="button" size="2" value="確定" onclick="train()" style="text-align: right;margin-left:10px;font-size:32px;">
+					</div>
+				</td>
+			</tr>
+		</table>
+		<script language =javascript >
+			var canvasE = document.getElementById('canvas0');
+			var ctx = canvasE.getContext("2d");
+			var colorr="A";
+			var matrixx,matrixy,matrixd,num=0;
+			var i=0,j=0,hiddennum=0,hiddencenterx,hiddencentery,hiddencentertempx,hiddencentertempy,centernum;
+			var gaussainhidden,sum=0,variance=0,variancex=0,variancey=0,gaussainhiddenT;
+			var gaussaintemp1,gaussaintemp2,gaussaintemp3,gaussaintemp4;
+			var I = [], C = [];
+			var weight;
+			
+			matrixx=new Array(122500);
+			matrixy=new Array(122500);
+			matrixd=new Array(2);
+			for(i=0;i<2;i++)
+			{
+				matrixd[i]=new Array(122500);
+			}
+			function getMousePos(canvasE, evt) 
+			{	
+				var rect = canvasE.getBoundingClientRect();
+					return {
+					x: evt.clientX - rect.left,
+					y: evt.clientY - rect.top
+					};
+			}
+			if(canvasE){
+				canvasE.addEventListener("click", function(evt){
+					var mousePos = getMousePos(canvasE, evt);
+						//alert(mousePos.x+" "+mousePos.y);
+						ctx.beginPath();
+						ctx.arc(mousePos.x,mousePos.y,3,0,360,false);
+						if (colorr=="A")
+						{
+							ctx.fillStyle="#0066FF";//填充颜色,默认是黑色
+							matrixd[0][num]=1;
+							matrixd[1][num]=-1;
+						}
+						else
+						{
+							ctx.fillStyle="#00DD77";//填充颜色,默认是黑色
+							matrixd[0][num]=-1;
+							matrixd[1][num]=1;
+						}
+						ctx.fill();//画实心圆
+						ctx.closePath();
+						matrixx[num]=mousePos.x;
+						matrixy[num]=mousePos.y;
+						num=num+1;
+				},false);
+			}
+			function choseA()
+			{
+				colorr="A";
+				window.alert("chose A type");
+			}
+			function choseB()
+			{
+				colorr="B";
+				window.alert("chose B type");
+			}
+
+			function train()
+			{	
+				hiddennum=document.getElementById("hidden").value;
+				var c=document.getElementById("canvas1");
+				var ctxx=c.getContext("2d");
+				var imgData=ctx.getImageData(0,0,350,350);
+				
+				ctxx.putImageData(imgData,0,0);
+				
+				
+				if (hiddennum==1 || hiddennum<0)
+				{
+						window.alert("請輸入數字2其他功能未開放");					
+				}
+				else if(hiddennum==2)
+				{
+					hiddencenterx=new Array(hiddennum);
+					hiddencentery=new Array(hiddennum);
+					hiddencentertempx=new Array(hiddennum);
+					hiddencentertempy=new Array(hiddennum);
+					centernum=new Array(hiddennum);
+					for(i=0;i<hiddennum;i++)
+					{
+						hiddencenterx[i]=matrixx[i];
+						hiddencentery[i]=matrixy[i];
+					}
+						window.alert("K-mean start");		
+					KNN();
+						window.alert("K-mean finish");		
+					for(i=0;i<hiddennum;i++)
+					{
+						ctxx.beginPath();
+						ctxx.arc(hiddencenterx[i],hiddencentery[i],3,0,360,false);
+						ctxx.fillStyle="red";//填充颜色,默认是黑色
+						ctxx.fill();//画实心圆
+						ctxx.closePath();
+					}
+					Gaussian();	
+					if(hiddennum==2)
+					{
+						document.getElementById("fontX").innerHTML='G(t1)';
+						document.getElementById("fontY").innerHTML='G(t2)';
+						var d=document.getElementById("canvas2");
+						var ctxxx=d.getContext("2d");
+						var drawline,drawline1,linechose=0;
+						var posx=0,posy=0,negx=0,negy=0,posnum=0,negnum=0,wwx,wwy,b;
+						var lx,ly,rx,ry,AA=0,BB=0,pi=0,loo=1;
+						var zz=0,oo=1;
+						
+							ctxxx.beginPath();
+							ctxxx.clearRect(0, 0, 350, 350);
+							
+							ctxxx.closePath();
+						for (i=0;i<num;i++)
+						{
+							ctxxx.beginPath();
+							//window.alert(i+" "+gaussainhidden[i][0]+" "+gaussainhidden[i][1]);		
+							ctxxx.arc(350*gaussainhidden[i][0],350*gaussainhidden[i][1],3,0,360,false);
+							if(matrixd[0][i]==1 &&matrixd[1][i]==-1)
+							{
+								ctxxx.fillStyle="#0066FF";//填充颜色,默认是黑色
+							}
+							else if(matrixd[0][i]==-1 &&matrixd[1][i]==1)
+							{
+								ctxxx.fillStyle="#00DD77";//填充颜色,默认是黑色
+							}
+							ctxxx.fill();//画实心圆
+							//window.alert(i+" \n"+matrixd[0][i]+" "+matrixd[1][i]+" \n"+(gaussainhidden[i][0]*weight[0][0]+gaussainhidden[i][1]*weight[0][1])+" \n"+(gaussainhidden[i][0]*weight[1][0]+gaussainhidden[i][1]*weight[1][1]));	
+							
+							ctxxx.closePath();
+						}
+						/*
+						linechose=1;
+						for(i=0;i<num;i++)
+						{
+							if((gaussainhidden[i][0]*weight[0][0]+gaussainhidden[i][1]*weight[0][1])*matrixd[0][i]<0 || (gaussainhidden[i][0]*weight[1][0]+gaussainhidden[i][1]*weight[1][1])*matrixd[1][i]<0)
+							{
+								linechose=0;
+							}
+						}
+						if (linechose==0)
+						{
+							linechose=2;
+							for(i=0;i<num;i++)
+							{
+								if((gaussainhidden[i][0]*weight[0][0]-gaussainhidden[i][1]*weight[0][1])*matrixd[0][i]<0 || (gaussainhidden[i][0]*weight[1][0]-gaussainhidden[i][1]*weight[1][1])*matrixd[1][i]<0)
+								{
+									linechose=0;
+								}
+							}
+						}
+						for(i=0;i<350;i=i+0.1)
+						{
+							for(j=0;j<350;j=j+0.1)
+							{	
+								if(linechose==1 )
+								{
+									drawline=j*weight[0][0]+i*weight[0][1];
+									drawline1=j*weight[1][0]+i*weight[1][1];
+								}
+								else if(linechose==2)
+								{
+									drawline=j*weight[0][0]-i*weight[0][1];
+									drawline1=j*weight[1][0]-i*weight[1][1];
+									
+								}
+								else
+								{
+									alert("false");
+								}
+								if(Math.abs(drawline1)<3 && Math.abs(drawline)<3 )
+								{							
+									ctxxx.beginPath();
+									//window.alert(i+" "+gaussainhidden[i][0]+" "+gaussainhidden[i][1]);		
+									ctxxx.arc(j,i,1,0,360,false);
+									ctxxx.fillStyle="black";//填充颜色,默认是黑色
+									ctxxx.fill();//画实心圆
+									ctxxx.closePath();
+									
+								}
+							}
+						}*/
+						for(i=0;i<num;i++)
+						{
+							if(matrixd[0][i]==1 &&matrixd[1][i]==-1)
+							{
+								posx=posx+gaussainhidden[i][0];
+								posy=posy+gaussainhidden[i][1];
+								posnum=posnum+1;
+							}
+							else if(matrixd[0][i]==-1 &&matrixd[1][i]==1)
+							{
+								negx=negx+gaussainhidden[i][0];
+								negy=negy+gaussainhidden[i][1];
+								negnum=negnum+1;
+								
+							}
+							
+						}
+						posx=posx/posnum;
+						posy=posy/posnum;
+						negx=negx/negnum;
+						negy=negy/negnum;
+						wwx=posx-negx;
+						wwy=posy-negy;
+						/*
+							ctxxx.beginPath();
+							//window.alert(i+" "+gaussainhidden[i][0]+" "+gaussainhidden[i][1]);		
+							ctxxx.arc(350*((posx+negx)/2),350*((posy+negy)/2),3,0,360,false);
+								ctxxx.fillStyle="red";//填充颜色,默认是黑色
+							ctxxx.fill();//画实心圆
+							ctxxx.closePath();*/
+						//alert(posx+" "+posy+" \n"+negx+" "+negy+" \n"+wwx+" "+wwy+" ");
+							//b=((posy+negy)/2)+((pi+(wwx/wwy))*((posx+negx)/2));
+						while(loo>0 &&zz<5000)
+						{
+							/*
+							if(zz>1000 && oo==1 )
+							{
+								oo=-1;
+								pi=0;
+							}*/
+							zz++;
+							b=((posy+negy)/2)+((pi*Math.PI)*((posx+negx)/2));
+							//alert((((pi*(wwx/wwy))*((posx+negx)/2)*-1)+b-((posy+negy)/2)));
+							loo=0;
+							AA=matrixd[0][0];
+							if(gaussainhidden[0][0]*(pi*Math.PI)*-1+b-gaussainhidden[0][1]>0)
+							{
+								BB=1;
+							}
+							else
+							{
+								BB=-1;
+							}
+							for(i=0;i<num;i++)
+							{
+								//alert(AA+"\n"+i+" "+matrixd[0][i]+"\n"+BB+"\n"+(gaussainhidden[i][0]*((wwy/wwx)+pi)*-1+b-gaussainhidden[i][1]));
+								if(matrixd[0][i]==AA )
+								{
+									if(BB==1 && gaussainhidden[i][0]*(pi*Math.PI)*-1+b-gaussainhidden[i][1]<0)
+									{
+										loo=1;
+										pi=pi+0.01*oo;
+										break;
+									}
+									else if (BB==-1 && gaussainhidden[i][0]*(pi*Math.PI)*-1+b-gaussainhidden[i][1]>0)
+									{
+										loo=1;
+										pi=pi+0.01*oo;
+										break;
+									}
+									
+								}
+								else
+								{
+									if(BB==1 && gaussainhidden[i][0]*(Math.PI*pi)*-1+b-gaussainhidden[i][1]>0)
+									{
+										loo=1;
+										pi=pi+0.01*oo;
+										break;
+									}
+									else if (BB==-1 && gaussainhidden[i][0]*(pi*Math.PI)*-1+b-gaussainhidden[i][1]<0)
+									{
+										loo=1;
+										pi=pi+0.01*oo;
+										break;
+										
+									}
+								}
+								if(i==num-1)
+								{
+									alert("success "+pi);
+								}
+							}
+						
+							//alert((pi*(wwx/wwy)));
+						}
+						if(b>=0 && b<=1)
+						{
+							ly=b;
+							lx=0;
+						}
+						else if(b>1)
+						{
+							ly=1;
+							lx=(ly-b)*(Math.PI*pi)*-1;
+						}
+						else if (b<0)
+						{
+							ly=0;
+							lx=b*(Math.PI*pi);							
+						}
+						rx=1;
+						ry=rx*(pi*Math.PI)*-1+b;
+						//ry=1;
+						//rx=(b*(wwy/wwx)*-1)+ry;
+						if(ry>1 )
+						{
+							ry=1;
+							rx=(ry-b)*(Math.PIpi)*-1;
+						}
+						else if (ry<0)
+						{
+							ry=0;
+							rx=(ry-b)*(Math.PI*pi)*-1;							
+						}
+						//alert(b+"---\n"+lx+" "+ly+"\n"+rx+" "+ry);
+							ctxxx.beginPath();//開始繪製
+					
+						  ctxxx.strokeStyle = '#000000';//設定線條顏色  預設為 黑色
+						  ctxxx.lineWidth = 1;//設定線條寬度  預設為 1
+						  ctxxx.lineCap = 'square';//設定線頭格式 square / round / butt  預設值為square
+						  //畫一條垂直的線
+						  //ctxxx.moveTo(350*(1-lx),350*(1-ly));//移到那一個坐標點 (X,Y)
+						  //ctxxx.lineTo(350*(1-rx), 350*(1-ry));//從x點到y點 
+						  ctxxx.moveTo(350*lx,350*ly);//移到那一個坐標點 (X,Y)
+						  ctxxx.lineTo(350*rx, 350*ry);//從x點到y點 
+						  ctxxx.stroke();//繪製邊線
+						
+					}
+					else
+					{
+						document.getElementById("fontX").innerHTML='X';
+						document.getElementById("fontY").innerHTML='Y';						
+					}
+				}
+				else 
+				{
+						window.alert("請輸入數字2其他功能未開放");	
+				/*
+					hiddencenterx=new Array(num);
+					hiddencentery=new Array(num);
+						window.alert("full connect");		
+					for (i=0;i<num;i++)
+					{
+						hiddencenterx[i]=matrixx[i];
+						hiddencentery[i]=matrixy[i];
+					}
+					for(i=0;i<num;i++)
+					{
+						ctxx.beginPath();
+						ctxx.arc(hiddencenterx[i],hiddencentery[i],3,0,360,false);
+						ctxx.fillStyle="red";//填充颜色,默认是黑色
+						ctxx.fill();//画实心圆
+						ctxx.closePath();
+					}
+					Gaussian();
+					document.getElementById("fontX").innerHTML='X';
+					document.getElementById("fontY").innerHTML='Y';
+				*/
+				}
+			}
+				
+				
+			
+			function KNN()
+			{
+				var min,minnum,tempmin,loop=1;
+				
+				
+				while (loop==1)
+				{
+					for(j=0;j<hiddennum;j++)
+					{
+						centernum[j]=0;
+						hiddencentertempx[j]=0;
+						hiddencentertempy[j]=0;
+					}
+					for(i=0;i<num;i++)
+					{
+						min=320000;
+						for(j=0;j<hiddennum;j++)
+						{
+							tempmin=(matrixx[i]-hiddencenterx[j])*(matrixx[i]-hiddencenterx[j])+(matrixy[i]-hiddencentery[j])*(matrixy[i]-hiddencentery[j]);
+							if(tempmin<min)
+							{
+								min=tempmin;
+								minnum=j;
+							}
+						}
+						centernum[minnum]=centernum[minnum]+1;
+						hiddencentertempx[minnum]=hiddencentertempx[minnum]+matrixx[i];
+						hiddencentertempy[minnum]=hiddencentertempy[minnum]+matrixy[i];
+					}
+					for(j=0;j<hiddennum;j++)
+					{
+						hiddencentertempx[j]=hiddencentertempx[j]/centernum[j];
+						hiddencentertempy[j]=hiddencentertempy[j]/centernum[j];
+					}
+					loop=0;
+					for(j=0;j<hiddennum;j++)
+					{	
+						//window.alert(j+" "+hiddencentertempx[j]+" "+hiddencenterx[j]+" "+hiddencentertempy[j]+" "+hiddencentery[j]);		
+						if(hiddencentertempx[j] != hiddencenterx[j] ||  hiddencentertempy[j] != hiddencentery[j])
+						{
+							loop=1;
+							break;
+						}
+					}
+					for(j=0;j<hiddennum;j++)
+					{
+						hiddencenterx[j]=hiddencentertempx[j];
+						hiddencentery[j]=hiddencentertempy[j];
+					}
+				}
+			}
+			
+			function Gaussian()
+			{
+				var m=0,n=0;
+				sum=0;
+				variance=0;
+				variancex=0;
+				variancey=0;
+				gaussainhidden = new Array(num);
+				gaussainhiddenT = new Array(hiddennum);
+				weight=new Array(2);
+				for(i=0;i<2;i++)
+				{
+					weight[i]=new Array(hiddennum);
+				}
+				for(i=0;i<2;i++)
+				{
+					for(j=0;j<hiddennum;j++)
+					{
+						weight[i][j]=0;
+					}
+				}
+				for(i=0; i<num ; i++){
+					gaussainhidden[i] = new Array(hiddennum);
+					gaussainhiddenT[i] = new Array(num);
+				}
+				for (i=0;i<num;i++)
+				{
+					sum=sum+matrixx[i]*matrixx[i]+matrixy[i]*matrixy[i];
+					variancex=variancex+matrixx[i];
+					variancey=variancey+matrixy[i];
+				}
+				sum=sum/num;
+				variancex=variancex/num;
+				variancey=variancey/num;
+				variance=sum-variancex*variancex-variancey*variancey;
+				variance=2*variance;
+				for (i=0;i<num;i++)
+				{
+					for(j=0;j<hiddennum;j++)
+					{
+						gaussainhidden[i][j]= Math.exp(-(((matrixx[i]-hiddencentertempx[j])*(matrixx[i]-hiddencentertempx[j])+(matrixy[i]-hiddencentertempy[j])*(matrixy[i]-hiddencentertempy[j]))/variance));
+						
+						//window.alert(i+" "+j+" "+gaussainhidden[i][j]);		
+					}
+				}
+				
+				//轉置
+				for(i=0;i<num;i++)
+				{
+					for(j=0;j<hiddennum;j++)
+					{
+						gaussainhiddenT[j][i]=gaussainhidden[i][j];
+					}
+				}
+				
+				gaussaintemp1 = new Array(hiddennum);
+				gaussaintemp2 = new Array(hiddennum);
+				for (i=0;i<hiddennum;i++)
+				{
+					gaussaintemp1[i] = new Array(hiddennum);
+					gaussaintemp2[i] = new Array(hiddennum);
+				}
+				gaussaintemp3 = new Array(hiddennum);
+				for (i=0;i<num;i++)
+				{
+					gaussaintemp3[i] = new Array(num);
+				}
+				
+				for (i=0;i<hiddennum;i++)
+				{
+					for (j=0;j<hiddennum;j++)
+					{
+						gaussaintemp1[i][j]=0;
+						gaussaintemp2[i][j]=0;
+					}
+				}
+				for (i=0;i<hiddennum;i++)
+				{
+					for (j=0;j<num;j++)
+					{
+						gaussaintemp3[i][j]=0;
+					}
+				}
+				
+				//window.alert("gasuu");
+				for (i=0;i<hiddennum;i++)
+				{
+					for (j=0;j<hiddennum;j++)
+					{
+						for(m=0;m<num;m++)
+						{
+							gaussaintemp1[i][j]=gaussaintemp1[i][j]+gaussainhidden[m][j]*gaussainhiddenT[i][m];
+								
+							//window.alert(i+" "+j+" "+m+" "+n+" \n"+gaussaintemp1[i][j]+"--");		
+						}
+					}
+				}
+						//window.alert("--");	
+				matrix_invert(gaussaintemp1);
+				/*
+				for (i=0;i<hiddennum;i++)
+				{
+					for (j=0;j<hiddennum;j++)
+					{
+						window.alert(i+" "+j+" "+" \n"+I[i][j]+"--");		
+					}
+				}*/
+				
+				
+				for (i=0;i<hiddennum;i++)
+				{
+					for (j=0;j<num;j++)
+					{
+						for(m=0;m<hiddennum;m++)
+						{
+							gaussaintemp3[i][j]=gaussaintemp3[i][j]+I[i][m]*gaussainhiddenT[m][j];
+							
+							//window.alert(i+" "+j+" "+m+" "+n+" \n"+gaussaintemp1[i][j]+"--");		
+						
+						}
+					}
+				}
+				
+				for (i=0;i<hiddennum;i++)
+				{
+					for(j=0;j<2;j++)
+					{
+						for(m=0;m<num;m++)
+						{
+							weight[j][i]=weight[j][i]+gaussaintemp3[i][m]*matrixd[j][m];
+							//window.alert(i+" "+m+"  \n"+gaussaintemp3[i][m]+" "+matrixd[m]+"\n"+weight[i]);	
+								
+						}	
+						//window.alert(i+" "+j+"  \n"+weight[j][i]);	
+					}
+				}
+				
+				
+			}
+			
+			function matrix_invert(M)
+			{
+				// I use Guassian Elimination to calculate the inverse:
+				// (1) 'augment' the matrix (left) by the identity (on the right)
+				// (2) Turn the matrix on the left into the identity by elemetry row ops
+				// (3) The matrix on the right is the inverse (was the identity matrix)
+				// There are 3 elemtary row ops: (I combine b and c in my code)
+				// (a) Swap 2 rows
+				// (b) Multiply a row by a scalar
+				// (c) Add 2 rows
+				
+				//if the matrix isn't square: exit (error)
+				if(M.length !== M[0].length){return;}
+				
+				//create the identity matrix (I), and a copy (C) of the original
+				var i=0, ii=0, j=0, dim=M.length, e=0, t=0;
+				for(i=0; i<dim; i+=1){
+					// Create the row
+					I[I.length]=[];
+					C[C.length]=[];
+					for(j=0; j<dim; j+=1){
+						
+						//if we're on the diagonal, put a 1 (for identity)
+						if(i==j){ I[i][j] = 1; }
+						else{ I[i][j] = 0; }
+						
+						// Also, make the copy of the original
+						C[i][j] = M[i][j];
+					}
+				}
+				
+				// Perform elementary row operations
+				for(i=0; i<dim; i+=1){
+					// get the element e on the diagonal
+					e = C[i][i];
+					
+					// if we have a 0 on the diagonal (we'll need to swap with a lower row)
+					if(e==0){
+						//look through every row below the i'th row
+						for(ii=i+1; ii<dim; ii+=1){
+							//if the ii'th row has a non-0 in the i'th col
+							if(C[ii][i] != 0){
+								//it would make the diagonal have a non-0 so swap it
+								for(j=0; j<dim; j++){
+									e = C[i][j];       //temp store i'th row
+									C[i][j] = C[ii][j];//replace i'th row by ii'th
+									C[ii][j] = e;      //repace ii'th by temp
+									e = I[i][j];       //temp store i'th row
+									I[i][j] = I[ii][j];//replace i'th row by ii'th
+									I[ii][j] = e;      //repace ii'th by temp
+								}
+								//don't bother checking other rows since we've swapped
+								break;
+							}
+						}
+						//get the new diagonal
+						e = C[i][i];
+						//if it's still 0, not invertable (error)
+						if(e==0){return}
+					}
+					
+					// Scale this row down by e (so we have a 1 on the diagonal)
+					for(j=0; j<dim; j++){
+						C[i][j] = C[i][j]/e; //apply to original matrix
+						I[i][j] = I[i][j]/e; //apply to identity
+					}
+					
+					// Subtract this row (scaled appropriately for each row) from ALL of
+					// the other rows so that there will be 0's in this column in the
+					// rows above and below this one
+					for(ii=0; ii<dim; ii++){
+						// Only apply to other rows (we want a 1 on the diagonal)
+						if(ii==i){continue;}
+						
+						// We want to change this element to 0
+						e = C[ii][i];
+						
+						// Subtract (the row above(or below) scaled by e) from (the
+						// current row) but start at the i'th column and assume all the
+						// stuff left of diagonal is 0 (which it should be if we made this
+						// algorithm correctly)
+						for(j=0; j<dim; j++){
+							C[ii][j] -= e*C[i][j]; //apply to original matrix
+							I[ii][j] -= e*I[i][j]; //apply to identity
+						}
+					}
+				}
+				
+				//we've done all operations, C should be the identity
+				//matrix I should be the inverse:
+				//return I;
+			}
+		</script>
+	</body>
+</html>
